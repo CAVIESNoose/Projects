@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Calc {
 
     //private data fields
@@ -19,6 +21,42 @@ public class Calc {
     public void setNum2(double newNum2)
     {
         this.num2 = newNum2;
+    }
+
+    //asks for num1 over and over until the user enters a number
+    public void setNum1()
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+
+        //keep asking while the input is not a number
+        while (!scan.hasNextDouble())
+        {
+            scan.nextLine(); //throw away the bad input
+            System.out.println("Invalid input. Please enter a number.");
+            System.out.print("Enter first number: ");
+        }
+
+        //valid number, so store it using the set method
+        this.setNum1(scan.nextDouble());
+    }
+
+    //asks for num2 over and over until the user enters a number
+    public void setNum2()
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter second number: ");
+
+        //keep asking while the input is not a number
+        while (!scan.hasNextDouble())
+        {
+            scan.nextLine(); //throw away the bad input
+            System.out.println("Invalid input. Please enter a number.");
+            System.out.print("Enter second number: ");
+        }
+
+        //valid number, so store it using the set method
+        this.setNum2(scan.nextDouble());
     }
 
     //get or accessor method for num1
