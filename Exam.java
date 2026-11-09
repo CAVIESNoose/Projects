@@ -1,33 +1,39 @@
-public class Exam extends Assessment {
+public class Exam extends Assessment
+{
+    // Number of questions on the exam
+    private int numQuestions;
 
-    //private data fields
-    private int numQuestions;  //number of questions on the exam
-    private int numMissed;     //number of questions missed
-    private double pointsEach; //points each question is worth
+    // Number of questions missed
+    private int numMissed;
 
-    //constructor that sets the exam data and calculates the score
+    // Points each question is worth
+    private double pointsEach;
+
+    // Constructor
     public Exam(int questions, int missed)
     {
+        // Stop a division by zero
+        if (questions == 0)
+        {
+            throw new ArithmeticException("The exam must have at least 1 question.");
+        }
+
         this.numQuestions = questions;
         this.numMissed = missed;
-
-        //each question is worth an equal share of 100 points
         this.pointsEach = 100.0 / questions;
 
-        //score is 100 minus the points lost for missed questions
+        // Work out the score and send it to the parent class
         double numericScore = 100.0 - (missed * this.pointsEach);
-
-        //store the score using the inherited set method
         this.setScore((int) numericScore);
     }
 
-    //returns the points each question is worth
+    // Returns the points each question is worth
     public double getPointsEach()
     {
         return this.pointsEach;
     }
 
-    //returns the number of questions missed
+    // Returns the number of questions missed
     public int getNumMissed()
     {
         return this.numMissed;
