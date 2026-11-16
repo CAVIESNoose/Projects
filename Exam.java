@@ -24,7 +24,7 @@ public class Exam extends Assessment
 
         // Work out the score and send it to the parent class
         double numericScore = 100.0 - (missed * this.pointsEach);
-        this.setScore((int) numericScore);
+        this.setScore((int) Math.round(numericScore));
     }
 
     // Returns the points each question is worth
